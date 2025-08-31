@@ -1,69 +1,102 @@
-# React + TypeScript + Vite
+# Online Courses App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+**Online Courses App** is a React + Redux application for browsing and watching video courses.  
+It demonstrates modern frontend practices, including:
 
-Currently, two official plugins are available:
+- React with TypeScript
+- Redux Toolkit for state management
+- React Router for routing
+- Lazy loading with `React.Suspense`
+- Form handling with `react-hook-form` and validation with `Yup`
+- TailwindCSS for styling
+- Shadcn for UI components
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Browse a list of courses with detailed information.
+- Watch course videos directly in the app.
+- Manage authentication through login forms.
+- Optimized performance using lazy loading and memoization.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Technologies Used
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **React 18+**
+- **TypeScript**
+- **Redux Toolkit**
+- **React Router DOM**
+- **TailwindCSS**
+- **Shadcn UI**
+- **React Hook Form + Yup**
+- **Vite**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Installation
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository:
+   git clone https://github.com/kapsomun/online-courses.git
+   cd online-courses
+
+2. Install dependencies:
+   npm install
+
+Running the App:
+
+1. Start the development server:
+   npm run dev
+
+2. Open the app in your browser:
+   http://localhost:5173
+
+---
+
+## Folder Structure
+```bash
+src/
+├── app/                   # App-level settings (store, providers, mocks)
+│   ├── mock/              # Mock data
+│   │   └── courses/
+│   │       └── mockCourses.ts
+│   ├── providers/         # Providers (Theme, Router, Redux, etc.)
+│   ├── App.tsx            # Root component
+│   └── store.ts           # Redux store
+│
+├── entities/              # Business entities (domain models)
+│   └── courses/
+│       └── model/
+│           ├── coursesSlice.ts
+│           └── types.ts
+│
+├── features/              # Application features
+│   └── auth/              # Authentication
+│
+├── pages/                 # Application pages
+│   ├── auth/              # Login / Registration page
+│   └── courses/           # Courses page
+│
+├── shared/                # Shared reusable code
+│   └── ui/                # UI components (atoms & molecules)
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── dialog.tsx
+│       ├── Header.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       ├── Layout.tsx
+│
+├── widgets/               # Large independent UI blocks
+│   └── courses/
+│       └── ui/
+│           ├── CourseCard.tsx
+│           ├── CoursesList.tsx
+│           └── VideoPlayer.tsx
+│
+├── main.tsx               # App entry point
+└── index.css              # Global styles
+---
