@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import type { RootState } from "@/app/store";
 import { purchaseCourse, setActiveVideo } from "@/entities/courses/model/coursesSlice";
-
 import { Course } from "@/entities/courses/model/types";
+
+
 
 interface CourseCardProps {
   course: Course;
@@ -14,6 +15,7 @@ interface CourseCardProps {
 
 const CourseCardComponent: React.FC<CourseCardProps> = ({ course }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const purchased = useSelector(
     (state: RootState) => state.courses.purchasedCourses.includes(course.id)
   );
@@ -22,7 +24,7 @@ const CourseCardComponent: React.FC<CourseCardProps> = ({ course }) => {
   const handlePurchase = () => {
     if (!user) {
       toast.error("You must be logged in to purchase a course!");
-
+      return navigate("/auth");
     }
     dispatch(purchaseCourse(course.id));
     toast.success(`You have successfully purchased the course "${course.title}"!`);
@@ -31,6 +33,7 @@ const CourseCardComponent: React.FC<CourseCardProps> = ({ course }) => {
   const handlePlay = () => {
     if (!user) {
       toast.error("You must be logged in to watch videos!");
+      return navigate("/auth");
     }
     dispatch(setActiveVideo(course.id));
   };

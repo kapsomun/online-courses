@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import type { RootState, AppDispatch } from "@/app/store";
 import { logout } from "@/features/auth/model/authSlice";
@@ -11,12 +13,14 @@ interface HeaderProps {
   onLoginClick?: () => void;
 }
 export const Header: React.FC<HeaderProps> = ({ title }) => {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.auth.user);
 
   const handleLogout = () => {
     dispatch(logout());
+    toast("You have logged out.", { icon: "👋" });
+    navigate("/auth");
   };
 
   return (
