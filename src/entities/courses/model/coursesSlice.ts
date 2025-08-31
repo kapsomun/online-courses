@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { mockCourses } from "../api";
+import { mockCourses } from "../../../app/mock";
 
 import { Course, CourseState } from "./types";
 

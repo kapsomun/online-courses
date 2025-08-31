@@ -1,4 +1,4 @@
-import { Course } from "../model/types";
+import { Course } from "../../../entities/courses/model/types";
 
 export const mockCourses: Course[] = [
   {
